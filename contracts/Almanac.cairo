@@ -106,15 +106,30 @@ end
 
 @constructor
 func constructor{ syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(owner: felt, ether: felt, vrfProvider: felt):
+    
     BaseUri.write('https://sn.almanacNFT.xyz/')
-    Price.write(Uint256(3*(10**16),0))
+    
     Ether.write(ether)
-    MaxMarket.write(13)
     VRFProvider.write(vrfProvider)
 
-    Enabled.write(TRUE)
-    MinMarketDate.write(0,100)
-
+    Price.write(Uint256(3*(10**16),0))
+    
+    MaxMarket.write(13)
+    MinMarketDate.write(0,1827)
+    MinMarketDate.write(1,2777)
+    MinMarketDate.write(2,2778)
+    MinMarketDate.write(3,3642)
+    MinMarketDate.write(4,3564)
+    MinMarketDate.write(5,4154)
+    MinMarketDate.write(6,4615)
+    MinMarketDate.write(7,4609)
+    MinMarketDate.write(8,4618)
+    MinMarketDate.write(9,4650)
+    MinMarketDate.write(10,4035)
+    MinMarketDate.write(11,3388)
+    MinMarketDate.write(12,4880)
+    MinMarketDate.write(13,5191)
+    
     ERC721.initializer('AlmanacNFT', 'ALMANAC')
     ERC721_Enumerable.initializer()
     Ownable.initializer(owner)
@@ -131,7 +146,6 @@ func supportsInterface{ syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_
     let (success) = ERC165.supports_interface(interfaceId)
     return (success)
 end
-
 
 #ERC721
 @view
@@ -183,7 +197,6 @@ func isApprovedForAll{ syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_c
     let (isApproved: felt) = ERC721.is_approved_for_all(owner, operator)
     return (isApproved)
 end
-
 
 #ERC721Metadata
 @view
@@ -244,7 +257,6 @@ func setBaseURI{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_pt
     return ()
 end
 
-
 #ERC721Enumerable
 @view
 func totalSupply{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (totalSupply: Uint256):
@@ -263,7 +275,6 @@ func tokenByIndex{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_
     let (tokenId: Uint256) = ERC721_Enumerable.token_by_index(index)
     return (tokenId)
 end
-
 
 #Ownable
 @external
@@ -366,9 +377,7 @@ func publicMint{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_pt
     return()
 end
 
-
 #Milestone setup and shuffle
-
 #This function sets up a Milestone, reserving the date (no public mint possible)
 @external
 func setupMilestone{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(milestone: AlmanacMarketDay):
@@ -529,7 +538,6 @@ func milestoneMint{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check
     return()
 end
 
-
 #VRF
 @view
 func getVrfProvider{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (vrfProvider: felt):
@@ -543,7 +551,6 @@ func setVrfProvider{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_chec
     VRFProvider.write(vrfProvider)
     return()
 end
-
 
 #Almanacs
 @view
@@ -564,7 +571,6 @@ func getAlmanac{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_pt
     return (id) 
 end
 
-
 #Supply
 @view
 func getPublicMinted{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (publicMinted: Uint256):
@@ -577,7 +583,6 @@ func getMilestonesMinted{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range
     let (milestonesMinted) = MilestonesMinted.read()
     return (milestonesMinted)
 end
-
 
 #Allowed Markets and Min Dates
 @view
@@ -616,8 +621,6 @@ func setMinMarketDate{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_ch
     return()
 end
 
-
-
 #Enabled
 @view
 func isEnabled{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (enabled: felt):
@@ -636,7 +639,6 @@ func setEnabled{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_pt
     end
     return ()
 end
-
 
 #Price
 @view
@@ -658,7 +660,6 @@ func setEther{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}
     Ether.write(newEther)
     return ()
 end
-
 
 #Withdraw
 @external
