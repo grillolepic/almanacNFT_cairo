@@ -1,0 +1,27 @@
+{
+  "name": "almanacnft_cairo",
+  "version": "1.0.0",
+  "description": "AlmanacNFT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grillolepic/almanacNFT_cairo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grillolepic/almanacNFT_cairo/issues"
+  },
+  "homepage": "https://github.com/grillolepic/almanacNFT_cairo#readme",
+  "devDependencies": {
+    "@shardlabs/starknet-hardhat-plugin": "^0.6.5",
+    "hardhat": "^2.11.0"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^1.0.2",
+    "starknet": "^4.4.1"
+  }
+}
