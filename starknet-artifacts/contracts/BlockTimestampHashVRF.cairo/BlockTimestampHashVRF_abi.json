@@ -17,7 +17,12 @@
         "type": "struct"
     },
     {
-        "inputs": [],
+        "inputs": [
+            {
+                "name": "almanac",
+                "type": "felt"
+            }
+        ],
         "name": "constructor",
         "outputs": [],
         "type": "constructor"

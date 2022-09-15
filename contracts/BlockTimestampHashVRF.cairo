@@ -6,7 +6,7 @@ from starkware.cairo.common.hash import hash2
 from starkware.cairo.common.uint256 import Uint256
 from starkware.cairo.common.math import unsigned_div_rem
 from starkware.cairo.common.math_cmp import is_not_zero
-from starkware.cairo.common.math import assert_not_zero
+from starkware.cairo.common.math import assert_not_zero, split_felt
 from starkware.cairo.common.bool import TRUE, FALSE
 from starkware.starknet.common.syscalls import get_block_number, get_block_timestamp
 
@@ -54,7 +54,8 @@ func requestRandomNumber{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_c
         let (hash) = hash2{hash_ptr=pedersen_ptr}(blockTimestamp, blockNumber);
     }
 
-    GeneratedRandomNumber.write(id, hash);
+    let (_, random_128) = split_felt(hash);
+    GeneratedRandomNumber.write(id, random_128);
     return ();
 }
 
