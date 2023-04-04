@@ -1,13 +1,4 @@
-# Sample Hardhat Project
+# AlmanacNFT (Cairo Contracts)
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+AlmanacNFT is a collection of 10.000 unique crypto trading days on StarkNet.
+*Simply pick a market, pick a date, and own a day in crypto!*
